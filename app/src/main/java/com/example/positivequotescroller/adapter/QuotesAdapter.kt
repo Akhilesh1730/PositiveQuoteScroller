@@ -32,7 +32,7 @@ class QuotesAdapter constructor(private val dataSet : List<QuoteListItem>?, priv
         val saveImage = binding.imageViewQuotesBookmark
 
         fun setTextView(item : QuoteListItem) {
-            quotesTextView.text = "${item.q}"
+            quotesTextView.text = "\"${item.q}\""
             authorTextView.text = "- ${item.a}"
         }
 

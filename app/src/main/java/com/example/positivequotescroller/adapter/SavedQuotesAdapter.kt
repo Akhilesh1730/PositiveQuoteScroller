@@ -37,7 +37,7 @@ class SavedQuotesAdapter(
         val deleteImage = binding.imageViewSavedQuotesDelete
 
         fun setTextView(item : SavedItem) {
-            savedQuotesTextView.text = item.quotes
+            savedQuotesTextView.text = "\"${item.quotes}\""
             savedAuthorTextView.text = item.author
         }
     }
