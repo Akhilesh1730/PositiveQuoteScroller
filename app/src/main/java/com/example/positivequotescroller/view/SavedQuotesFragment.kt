@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.positivequotescroller.R
@@ -59,6 +61,45 @@ class SavedQuotesFragment : Fragment(), SavedQuotesAdapter.OnItemClickListeners 
         val layoutManager = LinearLayoutManager(requireContext())
         recyclerView.layoutManager = layoutManager
     }
+
+   /* private fun setUpObservers() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.getQuotesFlow().collect { resource ->
+                    when (resource) {
+                        is Resource.Success -> {
+                            list = resource.data as ArrayList<SavedItem>?
+                            setAdapter(resource.data)
+                            hideProgressDialog()
+                        }
+                        is Resource.Error -> {
+                            showToast(resource.message)
+                            hideProgressDialog()
+                        }
+                        else -> showProgressDialog()
+                    }
+                }
+            }
+        }
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.getQuotesAddedFlow().collect { resource ->
+                    when (resource) {
+                        is Resource.Success -> {
+                            if (resource.data == 1L) {
+                                showToast("Quotes Saved Successfully")
+                            }
+                        }
+                        is Resource.Error -> {
+                            showToast(resource.message)
+                        }
+                        else -> showProgressDialog()
+                    }
+                }
+            }
+        }
+    }*/
 
     private fun setUpObservers() {
         lifecycleScope.launch {
